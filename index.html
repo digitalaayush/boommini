@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BoomSafebot Payment</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    img { width: 250px; margin: 20px 0; }
+    input, button { padding: 10px; margin: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>🔥 Buy BoomSafebot Access Key 🔥</h1>
+  <h2> 👇 </h2>
+  <img src="https://i.postimg.cc/CMZ8BP5z/Whats-App-Image-2025-09-17-at-15-09-18.jpg" alt="QR Code">
+  <h2>Transaction ID</h2>
+  <form onsubmit="return handleSubmit(event)">
+    <input type="text" id="transactionId" placeholder="Enter Transaction ID" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const id = document.getElementById('transactionId').value.trim();
+      localStorage.setItem('transactionId', id);
+      window.location.href = "confirm.html";
+    }
+  </script>
+</body>
+</html>

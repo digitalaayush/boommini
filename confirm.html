@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmation</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; margin-top: 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1 id="message"></h1>
+  <div id="result"></div>
+  <button id="payAgain" style="display:none;" onclick="goBack()">Pay Again</button>
+
+  <script>
+    const id = localStorage.getItem('transactionId');
+    const message = document.getElementById('message');
+    const result = document.getElementById('result');
+    const payAgain = document.getElementById('payAgain');
+
+    // last two digits must be 99
+    const isValid = id && id.slice(-2) === "99";
+
+    let attempts = localStorage.getItem('validAttempts') || 0;
+    attempts = parseInt(attempts);
+
+    if (isValid && attempts < 3) {
+      attempts++;
+      localStorage.setItem('validAttempts', attempts);
+      window.location.href = "success.html"; // redirect to success page
+    } else {
+      message.textContent = "❌ Payment Failed";
+      result.textContent = "Please enter a valid Access Key.";
+      payAgain.style.display = "inline-block";
+    }
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
